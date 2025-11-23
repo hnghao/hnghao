@@ -1,4 +1,4 @@
-# GitHub Action for generating a contribution graph with a snake eating your contributions.
+# GitHub Action tạo hiệu ứng rắn săn mồi trên bảng contributions
 
 name: Generate GitHub contribution snake
 
@@ -11,14 +11,14 @@ on:
   # (tuỳ chọn) chạy khi push lên branch main
   push:
     branches:
-      - main  # nếu repo của bạn dùng 'master' thì sửa lại cho đúng
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Bước 1: checkout code
+      # Bước 1: checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -26,9 +26,7 @@ jobs:
       - name: Generate snake SVG
         uses: Platane/snk@v3
         with:
-          # Đọc contribution từ user hiện tại
-          github_user_name: ${{ github.repository_owner }}
-          # Danh sách file output sẽ tạo trong thư mục dist/
+          github_user_name: hnghao
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
